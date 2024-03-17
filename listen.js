@@ -34,7 +34,7 @@ const PORT = process.env.PORT || 8080;
         return;
       }
 
-      if (request.method === "POST" && request.url === "/signature") {
+      if (request.method === "GET" && request.url === "/signature") {
         var url = "";
         request.on("data", function (chunk) {
           url += chunk;
