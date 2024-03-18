@@ -52,7 +52,7 @@ const PORT = process.env.PORT || 8080;
             let output = JSON.stringify({
               status: "ok",
               ...sign,
-              navigator: navigator,
+              user_agent: navigator.user_agent,
             });
             response.writeHead(200, { "Content-Type": "application/json" });
             response.end(output);
