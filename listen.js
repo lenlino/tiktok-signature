@@ -35,7 +35,7 @@ const PORT = process.env.PORT || 8080;
         return;
       }
       var url_parse = url.parse(request.url, true);
-      console.log(url_parse);
+      console.log(url_parse.pathname === "/signature");
 
       if (request.method === "GET" && url_parse.pathname === "/signature") {
         request.on('data', (chunk) => {
