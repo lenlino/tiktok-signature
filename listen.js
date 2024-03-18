@@ -42,7 +42,7 @@ const PORT = process.env.PORT || 8080;
           console.log("Received url: " + url);
 
           try {
-            const sign = await signer.sign(url);
+            const sign = await signer.sign(url_parse.query.url);
             const navigator = await signer.navigator();
 
             let output = JSON.stringify({
