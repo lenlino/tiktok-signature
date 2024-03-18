@@ -34,9 +34,10 @@ const PORT = process.env.PORT || 8080;
         response.end();
         return;
       }
+      var url_parse = url.parse(request.url, true);
 
-      if (request.method === "GET" && request.url === "/signature") {
-        var url_parse = url.parse(request.url, true);
+      if (request.method === "GET" && url_parse.pathname === "/signature") {
+        
         console.log(url_parse);
         request.on("end", async function () {
           console.log("Received url: " + url);
