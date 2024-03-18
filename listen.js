@@ -37,10 +37,6 @@ const PORT = process.env.PORT || 8080;
 
       if (request.method === "GET" && request.url === "/signature") {
         var url = "";
-        
-        request.on("data", function (chunk) {
-          url += chunk;
-        });
         var url_parse = url.parse(request.url, true);
         print(url_parse)
         request.on("end", async function () {
