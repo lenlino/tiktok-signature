@@ -1,5 +1,6 @@
 const Signer = require("./index");
 const http = require("http");
+var url = require('url');
 const PORT = process.env.PORT || 8080;
 (async function main() {
   try {
@@ -27,7 +28,7 @@ const PORT = process.env.PORT || 8080;
     server.on("request", (request, response) => {
       response.setHeader("Access-Control-Allow-Origin", "*");
       response.setHeader("Access-Control-Allow-Headers", "*");
-
+      
       if (request.method === "OPTIONS") {
         response.writeHead(200);
         response.end();
@@ -36,10 +37,12 @@ const PORT = process.env.PORT || 8080;
 
       if (request.method === "GET" && request.url === "/signature") {
         var url = "";
+        
         request.on("data", function (chunk) {
           url += chunk;
         });
-
+        var url_parse = url.parse(request.url, true);
+        print(url_parse)
         request.on("end", async function () {
           console.log("Received url: " + url);
 
