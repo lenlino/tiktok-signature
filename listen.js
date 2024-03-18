@@ -43,7 +43,7 @@ const PORT = process.env.PORT || 8080;
       });
         
         request.on("end", async function () {
-          console.log("Received url: " + url);
+          console.log("Received url: " + url_parse.query.url);
 
           try {
             const sign = await signer.sign(url_parse.query.url);
