@@ -47,6 +47,7 @@ const PORT = process.env.PORT || 8080;
 
           try {
             const sign = await signer.sign(url_parse.query.url);
+            const ttwid = await signer.sign("https://www.tiktok.com/");
             const navigator = await signer.navigator();
 
             let output = JSON.stringify({
@@ -54,7 +55,7 @@ const PORT = process.env.PORT || 8080;
               ...sign,
               user_agent: navigator.user_agent,
             });
-            response.writeHead(200, { "Content-Type": "application/json" });
+            response.writeHead(200, { "Content-Type": "application/json", "x-set-tt-cookie": "1%7CjlDdDy6xwx_sx-68zmCBYY3mKTBkTajO7CF52fMhoYY%7C1675436987%7C25023915df27377f763e8d01e6727323a963687834caf05823e22573fe37f3c2" });
             response.end(output);
             console.log(output);
           } catch (err) {
